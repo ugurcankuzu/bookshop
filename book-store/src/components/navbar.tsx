@@ -1,11 +1,22 @@
+"use client";
+import checkWindowWidth from "@/util/checkWindowWidth";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  useEffect(() => {
+    window.addEventListener("resize", (event) =>
+      checkWindowWidth(event, setWindowWidth)
+    );
+  });
   return (
     <section className={navbarComponentStyle.navbarSectionFrame}>
       <div className={navbarComponentStyle.navbarMain}>
         <Link href={""}>
-          <h1 className={navbarComponentStyle.logo}>BookShop</h1>
+          <h1 className={navbarComponentStyle.logo}>
+            {windowWidth <= 425 ? "BS" : "BookShop"}
+          </h1>
         </Link>
         {/* TODO: Searchbar Component */}
         <Link href={""} className={navbarComponentStyle.signup}>
