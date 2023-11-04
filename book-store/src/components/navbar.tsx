@@ -46,7 +46,7 @@ export default function Navbar() {
 
 const navbarComponentStyle = {
   navbarSectionFrame: "w-full flex flex-col items-center justify-start gap-4 ",
-  navbarMain: "w-full flex justify-between items-center px-8 md:w-4/5",
+  navbarMain: "w-full flex justify-between items-center px-8 xl:w-4/5",
   navbarRoutes: "w-full flex justify-center items-center gap-8 ",
   logo: "text-[36px] text-main-orange font-bold",
   navItem: "text-[18px] text-main-orange font-semibold",
