@@ -5,8 +5,12 @@ const routes = [
   },
   {
     label: "Shop",
-    path: "/shop"
-  }
+    path: "/shop",
+  },
+  {
+    label: "Signup",
+    path: "/signup",
+  },
 ];
 
 export default routes;

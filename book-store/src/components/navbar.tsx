@@ -1,5 +1,8 @@
 "use client";
+import Route from "@/types/route";
 import checkWindowWidth from "@/util/checkWindowWidth";
+import getRouteByLabel from "@/util/getRouteByLabel";
+import getRoutesByLabel from "@/util/getRoutesByLabel";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -19,17 +22,28 @@ export default function Navbar() {
           </h1>
         </Link>
         {/* TODO: Searchbar Component */}
-        <Link href={""} className={navbarComponentStyle.signup}>
-          Signup
-        </Link>
+        {getRouteByLabel("Signup", (route: Route) => {
+          return (
+            <Link
+              href={`${route.path}`}
+              className={navbarComponentStyle.signup}
+            >
+              {route.label}
+            </Link>
+          );
+        })}
       </div>
       <nav className={navbarComponentStyle.navbarRoutes}>
-        <Link href={""} className={navbarComponentStyle.navItem}>
-          Home
-        </Link>
-        <Link href={""} className={navbarComponentStyle.navItem}>
-          Shop
-        </Link>
+        {getRoutesByLabel(["Home", "Shop"], (routes: Route[]) =>
+          routes.map((route) => (
+            <Link
+              href={`${route.path}`}
+              className={navbarComponentStyle.navItem}
+            >
+              {route.label}
+            </Link>
+          ))
+        )}
       </nav>
     </section>
   );
