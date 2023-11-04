@@ -6,17 +6,21 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 export default function Navbar() {
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
   const handleResize = function (event: Event) {
     setWindowWidth(window.innerWidth);
   };
+
   const cleanupEffect = () => {
     window.removeEventListener("resize", handleResize);
   };
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
 
     return cleanupEffect;
   }, []);
+
   return (
     <motion.section
       initial={{ y: 50, opacity: 0 }}
