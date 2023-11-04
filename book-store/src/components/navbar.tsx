@@ -1,25 +1,29 @@
 "use client";
-import Route from "@/types/route";
 import getLinkByLabel from "@/util/getLinkByLabel";
 import getLinksByLabels from "@/util/getLinksByLabels";
-import getLinksByLabel from "@/util/getLinksByLabels";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-{
-  /**SAĞLIKLI KAFAYLA YARIN LİNK ROUTE İŞİNE BİR DAHA BAK. BU METHODLARA GEREK OLMAYABİLİR. */
-}
+import { motion } from "framer-motion";
 export default function Navbar() {
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const handleResize = function (event: Event) {
     setWindowWidth(window.innerWidth);
   };
+  const cleanupEffect = () => {
+    window.removeEventListener("resize", handleResize);
+  };
   useEffect(() => {
     window.addEventListener("resize", handleResize);
 
+    return cleanupEffect;
   }, []);
   return (
-    <section className={navbarComponentStyle.navbarSectionFrame}>
+    <motion.section
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className={navbarComponentStyle.navbarSectionFrame}
+    >
       <div className={navbarComponentStyle.navbarMain}>
         <Link href={""}>
           <h1 className={navbarComponentStyle.logo}>
@@ -32,7 +36,7 @@ export default function Navbar() {
       <nav className={navbarComponentStyle.navbarRoutes}>
         {getLinksByLabels(["Home", "Shop"], navbarComponentStyle.navItem)}
       </nav>
-    </section>
+    </motion.section>
   );
 }
 
