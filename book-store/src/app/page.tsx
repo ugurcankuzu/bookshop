@@ -1,3 +1,4 @@
+import HomePageProducts from "@/components/home/homePageProducts";
 import CampaignSlider from "@/components/home/slider";
 import Navbar from "@/components/navbar";
 
@@ -6,6 +7,9 @@ export default function Home() {
     <main className={homePageStyles.homePageMainFrame}>
       <Navbar />
       <CampaignSlider />
+      <HomePageProducts>
+        
+      </HomePageProducts>
     </main>
   );
 }
