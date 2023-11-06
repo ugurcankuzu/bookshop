@@ -11,5 +11,5 @@ export default function HomePageProducts({
 }
 
 const homePageProductsStyle = {
-  homePageProductsSection: "w-full bg-smoke border border-black",
+  homePageProductsSection: "w-full mt-8 flex flex-col justify-center items-center",
 };

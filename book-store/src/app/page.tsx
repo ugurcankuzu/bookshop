@@ -1,4 +1,5 @@
 import HomePageProducts from "@/components/home/homePageProducts";
+import ProductsBestSeller from "@/components/home/productsBestSeller";
 import CampaignSlider from "@/components/home/slider";
 import Navbar from "@/components/navbar";
 
@@ -8,7 +9,7 @@ export default function Home() {
       <Navbar />
       <CampaignSlider />
       <HomePageProducts>
-        
+        <ProductsBestSeller />
       </HomePageProducts>
     </main>
   );
