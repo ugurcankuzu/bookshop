@@ -27,8 +27,8 @@ export default function ProductsBestSeller() {
 
 const productsBestSellerStyle = {
   productsBestSellerWraper:
-    "w-full flex flex-col items-start justify-center gap-4 lg:w-4/5 ",
+    "w-full flex flex-col items-start justify-center gap-4 lg:w-4/5",
   productsBestSellerTitle: "text-[36px] font-bold text-pearl",
   productsLine:
-    "w-full flex gap-2 justify-center items-center md:justify-start ",
+    "w-full grid grid-cols-2 auto-rows-max md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-8 gap-2 justify-items-start align-items-center",
 };
