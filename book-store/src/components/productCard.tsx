@@ -29,7 +29,7 @@ export default function ProductCard({ item }: IProductCard) {
 
 const productCardStyle = {
   cardFrame:
-    "w-full h-[22rem] flex flex-col items-center justify-start shadow-md rounded-md box-border md:max-w-[15rem]",
+    "w-full h-[22rem] flex flex-col items-center justify-start shadow-lg rounded-md box-border md:max-w-[15rem] bg-pearl p-2",
   bookCover: "w-full h-48",
   infoSection: "w-full h-full flex flex-col justify-start items-center",
   itemInfo: "w-full h-full flex flex-col gap-2 justify-start items-center",

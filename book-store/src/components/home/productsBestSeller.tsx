@@ -28,7 +28,7 @@ export default function ProductsBestSeller() {
 const productsBestSellerStyle = {
   productsBestSellerWraper:
     "w-full flex flex-col items-start justify-center gap-4 lg:w-4/5 ",
-  productsBestSellerTitle: "text-[36px] font-bold",
+  productsBestSellerTitle: "text-[36px] font-bold text-pearl",
   productsLine:
-    "w-full flex gap-4 justify-center items-center md:justify-start ",
+    "w-full flex gap-2 justify-center items-center md:justify-start ",
 };
