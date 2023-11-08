@@ -30,12 +30,11 @@ export default function ProductCard({ item }: IProductCard) {
 const productCardStyle = {
   cardFrame:
     "w-full h-full flex flex-col items-center justify-start shadow-lg rounded-md box-border md:max-w-[15rem] bg-pearl p-2",
-  bookCover: "w-full h-48",
+  bookCover: "w-full h-48 drop-shadow-md",
   infoSection: "w-full h-full flex flex-col justify-start items-center",
   itemInfo: "w-full h-full flex flex-col gap-2 justify-between items-center",
   productName: "w-full text-lg font-bold text-center line-clamp-2",
-  authorName:
-    "w-full font-normal text-black/60 text-center line-clamp-2",
+  authorName: "w-full font-normal text-black/60 text-center line-clamp-2",
   price: "w-full text-main-orange text-center",
   addToCart: "bg-main-orange text-white w-full py-1",
 };

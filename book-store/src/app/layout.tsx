@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "@/app/globals.css"
+import "@/app/globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 // TODO: Veritabanı ile konuşarak BackOffice'ten alınabilir
@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className + bodyStyle}>{children}</body>
     </html>
   );
 }
+
+const bodyStyle = " bg-pearl";
