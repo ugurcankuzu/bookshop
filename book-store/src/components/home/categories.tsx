@@ -43,5 +43,5 @@ const categoriesStyle = {
   categoryCardContent:
     "w-full h-60 relative grid grid-cols-2 grid-rows-2 justify-items-center align-center gap-4 md:h-72 lg:h-96",
   smoothTransition:
-    " before:absolute before:content[''] before:z-100 before:bg-gradient-to-b from-pearl to-transparent before:top-0 before:w-full before:h-[50px] md:before:left-0 md:before:h-full md:before:w-1/2 md:before:bg-gradient-to-r",
+    " before:absolute before:content[''] before:z-100 before:bg-gradient-to-b from-pearl to-transparent before:top-0 before:w-full before:h-[50px] md:before:-left-[10px] md:before:h-full md:before:w-[100px] md:before:bg-gradient-to-r before:pointer-events-none",
 };
