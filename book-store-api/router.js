@@ -4,5 +4,5 @@ const getAllProducts = require("./routeHandlers/products/getAllProducts");
 const getProductsBySalecount = require("./routeHandlers/products/getProductsBySalecount");
 router.get("/allProducts", getAllProducts);
 router.get("/products", getProductsBySalecount);
-router.get("/getAllCategories", getAllCategories);
+router.get("/allCategories", getAllCategories);
 module.exports = router;
