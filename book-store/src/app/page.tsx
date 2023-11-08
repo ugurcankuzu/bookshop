@@ -1,4 +1,5 @@
 import Footer from "@/components/footer";
+import Categories from "@/components/home/categories";
 import HomePageProducts from "@/components/home/homePageProducts";
 import ProductsBestSeller from "@/components/home/productsBestSeller";
 import CampaignSlider from "@/components/home/slider";
@@ -12,6 +13,7 @@ export default function Home() {
       <HomePageProducts>
         <ProductsBestSeller />
       </HomePageProducts>
+      <Categories />
       <Footer />
     </main>
   );
