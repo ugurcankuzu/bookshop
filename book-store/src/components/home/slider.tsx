@@ -36,7 +36,7 @@ export default function CampaignSlider() {
 }
 
 const campaignSliderStyles = {
-  sectionFrame: "w-full h-fit max-h-[500px] flex justify-center items-center",
+  sectionFrame: "w-full h-fit max-h-[500px] flex justify-center items-center my-8",
   swiperObject: "[--swiper-navigation-color:black] w-full h-full shadow-xl xl:w-4/5",
   campaignImages: "w-full max-h-[500px] object-center object-cover",
 };
