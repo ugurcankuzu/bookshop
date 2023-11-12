@@ -52,27 +52,6 @@ export default function CampaignSlider() {
     </section>
   );
 }
-
-/**
- * 
- * <Swiper
-        modules={[Navigation]}
-        navigation={true}
-        className={campaignSliderStyles.swiperObject}
-      >
-        {campaignImages &&
-          campaignImages.map((campaignImage, index) => (
-            <SwiperSlide key={index}>
-              <Image
-                src={campaignImage}
-                alt="Campaign Images"
-                priority
-                className={campaignSliderStyles.campaignImages}
-              />
-            </SwiperSlide>
-          ))}
-      </Swiper>
- */
 const campaignSliderStyles = {
   sectionFrame: "w-full flex justify-center items-center p-2",
   sectionWrapper:
