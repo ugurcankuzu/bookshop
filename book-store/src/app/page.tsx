@@ -20,5 +20,5 @@ export default function Home() {
 }
 
 const homePageStyles = {
-  homePageMainFrame: "w-full h-full",
+  homePageMainFrame: "w-full h-full bg-pearl",
 };
