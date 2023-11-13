@@ -4,7 +4,10 @@ import TProduct from "@/types/product";
 import getBestSeller from "@/util/getBestSeller";
 import { useEffect, useState } from "react";
 import ProductCard from "../productCard";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 export default function ProductsBestSeller() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -27,8 +30,7 @@ export default function ProductsBestSeller() {
 
 const productsBestSellerStyle = {
   productsBestSellerWraper:
-    "w-full flex flex-col items-start justify-center gap-4 lg:w-4/5 p-2",
-  productsBestSellerTitle: "text-[36px] font-bold text-pearl",
-  productsLine:
-    "w-full grid grid-cols-2 auto-rows-max md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-8 gap-2 justify-items-start align-items-center",
+    "w-full flex flex-col items-start justify-center gap-4 xl:w-4/5 2xl:w-3/5 p-2",
+  productsBestSellerTitle: "text-3xl font-extrabold text-coal/90",
+  productsLine: "w-full h-fit flex flex-col gap-2",
 };

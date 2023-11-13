@@ -11,5 +11,5 @@ export default function HomePageProducts({
 }
 
 const homePageProductsStyle = {
-  homePageProductsSection: "w-full my-8 flex flex-col justify-center items-center bg-main-orange py-4 md:p-4",
+  homePageProductsSection: "w-full my-8 flex flex-col justify-center items-center py-4 md:p-4",
 };
