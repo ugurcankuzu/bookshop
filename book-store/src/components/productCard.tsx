@@ -21,11 +21,11 @@ export default function ProductCard({ item }: IProductCard) {
           <p className={productCardStyle.productName}>{item.productName}</p>
         </div>
         <div className={productCardStyle.productSubWrapper}>
-          <div className={productCardStyle.productAuthorWrapper}>
+          <div className={productCardStyle.productSubItemWrapper}>
             <p className={productCardStyle.productSubTitle}>Author</p>
             <p className={productCardStyle.productSubInfo}>{item.author}</p>
           </div>
-          <div className={productCardStyle.productPriceWrapper}>
+          <div className={productCardStyle.productSubItemWrapper}>
             <p
               className={
                 productCardStyle.productSubTitle +
@@ -49,16 +49,16 @@ export default function ProductCard({ item }: IProductCard) {
 }
 const productCardStyle = {
   productWrapper:
-    "w-full h-[250px] flex flex-col justify-start items-center gap-4 bg-smoke/10 p-2 shadow-md",
-  productImageWrapper: "w-full h-1/2",
+    "w-full sm:min-w-[300px] sm:max-w-[300px] h-[320px] flex flex-col justify-start items-center gap-4 bg-smoke/10 p-2 shadow-md sm:snap-center",
+  productImageWrapper: "w-full h-2/3",
   productInfoWrapper:
     "w-full h-full flex flex-col justify-between items-center divide-y-2 divide-smoke",
   productNameWrapper: "w-full h-full",
-  productSubWrapper: "w-full h-full flex justify-between items-center py-1",
-  productAuthorWrapper: "w-full h-full",
-  productPriceWrapper: "w-full h-full",
-  productImage: "w-full h-full drop-shadow-md",
-  productName: "text-2xl font-bold text-coal/90 text-ellipsis overflow-hidden",
+  productSubWrapper:
+    "w-full h-full flex justify-between items-center py-1",
+  productSubItemWrapper: "w-full h-full",
+  productImage: "w-full h-full object-scale-down drop-shadow-md",
+  productName: "text-2xl font-bold text-coal/90 line-clamp-1",
   productSubTitle: "text-sm text-coal/40",
   productSubInfo: "text-sm text-ellipsis overflow-hidden",
   buyNowTextEnd: " text-end",

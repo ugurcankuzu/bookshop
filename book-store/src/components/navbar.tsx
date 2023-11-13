@@ -66,7 +66,7 @@ export default function Navbar() {
 
 const navbarComponentStyle = {
   navbarSectionFrame:
-    "w-full flex flex-col justify-start items-center gap-4 bg-smoke/50 p-3 ",
+    "w-full flex flex-col justify-start items-center gap-4 bg-smoke/10 p-3 ",
   navbarMain: "w-full flex justify-between items-center xl:w-4/5 2xl:w-3/5",
   navbarRoutes: "w-full flex justify-center items-center sm:w-2/5 md:w-1/4",
   logo: "w-[36px] h-[36px] flex justify-center items-center bg-coal/90 text-pearl rounded-full tracking-widest",
