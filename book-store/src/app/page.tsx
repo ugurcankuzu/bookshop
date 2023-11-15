@@ -10,10 +10,10 @@ export default function Home() {
     <main className={homePageStyles.homePageMainFrame}>
       <Navbar />
       <CampaignSlider />
+      <Categories />
       <HomePageProducts>
         <ProductsBestSeller />
       </HomePageProducts>
-      <Categories />
       <Footer />
     </main>
   );
