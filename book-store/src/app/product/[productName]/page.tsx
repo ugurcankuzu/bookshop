@@ -1,11 +1,15 @@
+import ProductDisplay from "@/components/ProductPage/productDisplay";
+
 export default function ProductPage({
   params,
 }: {
   params: { productName: string };
 }) {
-  return <main className={productPageStyles.mainFrame}>
-    
-  </main>;
+  return (
+    <main className={productPageStyles.mainFrame}>
+      <ProductDisplay />
+    </main>
+  );
 }
 
 const productPageStyles = {

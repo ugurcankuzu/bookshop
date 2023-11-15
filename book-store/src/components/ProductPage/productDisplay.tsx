@@ -1,3 +1,10 @@
 export default function ProductDisplay() {
-  return <></>;
+  return <section>
+    {/* {Componentin içeriği doldurulacak} */}
+  </section>;
+}
+
+
+const ProductDisplayStyles = {
+
 }
