@@ -3,7 +3,7 @@ async function getAllCategories() {
     process.env.NEXT_PUBLIC_API_URL + "allCategories",
     {
       next: {
-        revalidate: 1800,
+        revalidate: 10,
       },
       cache: "force-cache",
     }
@@ -12,4 +12,4 @@ async function getAllCategories() {
   return data;
 }
 
-export default getAllCategories
+export default getAllCategories;
