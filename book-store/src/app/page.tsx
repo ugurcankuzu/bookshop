@@ -8,13 +8,11 @@ import Navbar from "@/components/navbar";
 export default function Home() {
   return (
     <main className={homePageStyles.homePageMainFrame}>
-      <Navbar />
       <CampaignSlider />
       <Categories />
       <HomePageProducts>
         <ProductsBestSeller />
       </HomePageProducts>
-      <Footer />
     </main>
   );
 }

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 // TODO: Veritabanı ile konuşarak BackOffice'ten alınabilir
@@ -16,9 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className + bodyStyle}>{children}</body>
+      <body className={inter.className + bodyStyle}>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
 
-const bodyStyle = " bg-pearl";
+const bodyStyle = " min-h-screen bg-pearl";
