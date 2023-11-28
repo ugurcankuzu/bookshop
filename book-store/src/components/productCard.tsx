@@ -52,7 +52,7 @@ const productCardStyle = {
     "w-full sm:min-w-[300px] sm:max-w-[300px] h-[320px] flex flex-col justify-start items-center gap-4 bg-smoke/10 p-2 shadow-md sm:snap-center",
   productImageWrapper: "w-full h-2/3",
   productInfoWrapper:
-    "w-full h-full flex flex-col justify-between items-center divide-y-2 divide-smoke",
+    "w-full h-full flex flex-col justify-between items-center divide-y divide-smoke",
   productNameWrapper: "w-full h-full",
   productSubWrapper:
     "w-full h-full flex justify-between items-center py-1",

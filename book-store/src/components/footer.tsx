@@ -21,7 +21,7 @@ export default function Footer() {
 const footerStyles = {
   footerFrame: "w-full bg-smoke/40 flex justify-center items-center",
   footerWrapper:
-    "w-full flex flex-col sm:flex-row items-center justify-center gap-4 divide-y-2 sm:divide-x-2 sm:divide-y-0 divide-smoke p-2 xl:w-4/5 2xl:w-3/5",
+    "w-full flex flex-col sm:flex-row items-center justify-center gap-4 divide-y sm:divide-x sm:divide-y-0 divide-smoke p-2 xl:w-4/5 2xl:w-3/5",
   footerLogoWrapper: "w-full flex justify-center items-center",
   footerSectionsWrapper:
     "w-full flex flex-col justify-center items-center pt-4",

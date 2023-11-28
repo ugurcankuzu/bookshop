@@ -18,14 +18,14 @@ async function getProductByName(req, res) {
       where("productName", "==", productName)
     );
     const snapshot = await getDocs(q);
-    const data = [];
+    let data = {};
     if (!snapshot.empty) {
       snapshot.docs.map(async (doc) => {
         const docObj = doc.data();
         const categoryNameRef = docObj.category;
         const categorySnap = await getDoc(categoryNameRef);
         docObj.category = categorySnap.data().categoryName;
-        data.push(docObj);
+        data = docObj;
         res.status(200).send(data);
       });
     } else {

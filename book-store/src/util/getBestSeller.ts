@@ -6,7 +6,6 @@ export default async function getBestSeller(orderBy: TOrderBy) {
       next: {
         revalidate: 1800,
       },
-      cache: "force-cache",
     }
   );
   const data = await response.json();
