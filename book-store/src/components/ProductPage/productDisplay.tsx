@@ -25,9 +25,10 @@ export default function ProductDisplay({
 }
 
 const productDisplayStyles = {
-  productDisplayFrame: "w-full h-screen flex justify-center items-start px-2",
+  productDisplayFrame: "w-full h-full flex justify-center items-start px-2",
   productDisplayWrapper:
     "w-full h-full flex flex-col items-center gap-4 p-2 sm:flex-row xl:w-4/5 2xl:w-3/5",
-  imageWrapper: "w-full h-1/2",
-  image: "w-full h-full drop-shadow-xl",
+  imageWrapper:
+    "w-full h-full bg-coal/90 flex justify-center items-center",
+  image: "w-3/4 md:w-2/3 lg:w-1/2 drop-shadow-xl",
 };

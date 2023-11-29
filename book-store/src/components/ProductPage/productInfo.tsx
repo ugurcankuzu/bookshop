@@ -49,7 +49,7 @@ export default function ProductInfo({
 
 const productInfoStyles = {
   productInfoWrapper:
-    "w-full max-w-1/2 flex flex-col justify-start items-center gap-2 bg-smoke/10 sm:h-full sm:justify-center sm:shadow-xl lg:w-1/2",
+    "w-full max-w-1/2 self-stretch flex flex-col justify-start items-center gap-2 bg-smoke/10 sm:justify-center lg:w-1/2",
   productMetaWrapper: "w-full flex flex-col justify-center items-center",
   productDetail: "w-full flex items-center justify-between gap-2 py-2",
   productDetailsWrapper:

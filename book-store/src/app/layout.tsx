@@ -27,4 +27,4 @@ export default function RootLayout({
   );
 }
 
-const bodyStyle = " min-h-screen bg-pearl";
+const bodyStyle = "w-screen min-h-screen bg-pearl";
