@@ -4,7 +4,7 @@ export default async function getBestSeller(orderBy: TOrderBy) {
     process.env.NEXT_PUBLIC_API_URL + "products?order=" + orderBy,
     {
       next: {
-        revalidate: 1800,
+        revalidate: 300,
       },
     }
   );

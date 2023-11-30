@@ -16,7 +16,7 @@ export default function ProductPage({
     getProductByName(params.productName).then((productInfo) =>
       setProductInfo(productInfo)
     );
-  }, []);
+  }, [params.productName]);
   return (
     <main className={productPageStyles.mainFrame}>
       {productInfo && (
@@ -32,5 +32,5 @@ export default function ProductPage({
 }
 
 const productPageStyles = {
-  mainFrame: "w-full h-full",
+  mainFrame: "flex-1",
 };

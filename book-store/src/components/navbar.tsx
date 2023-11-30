@@ -6,21 +6,17 @@ import { useEffect, useState } from "react";
 import SearchBar from "./searchBar";
 import searchProduct from "@/util/searchProduct";
 export default function Navbar() {
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
   const [searchText, setSearchText] = useState<string>("");
 
   const handleResize = function (event: Event) {
     setWindowWidth(window.innerWidth);
   };
 
-  const cleanupEffect = () => {
-    window.removeEventListener("resize", handleResize);
-  };
-
   useEffect(() => {
     window.addEventListener("resize", handleResize);
 
-    return cleanupEffect;
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {

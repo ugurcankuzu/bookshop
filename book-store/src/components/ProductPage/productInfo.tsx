@@ -20,7 +20,7 @@ export default function ProductInfo({
         </p>
         <p className={productInfoStyles.productAuthor}>{productInfo.author}</p>
         <p className={productInfoStyles.productDescription}>
-          "{productInfo.productDescription}"
+          {`"${productInfo.productDescription}"`}
         </p>
       </div>
       <div className={productInfoStyles.productDetailsWrapper}>
