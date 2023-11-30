@@ -1,12 +1,4 @@
 import TProduct from "@/types/product";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faQuoteLeft,
-  faBook,
-  faSignature,
-  faTag,
-} from "@fortawesome/free-solid-svg-icons";
-
 export default function ProductInfo({
   productInfo,
 }: {

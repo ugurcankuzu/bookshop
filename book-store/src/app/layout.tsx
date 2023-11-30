@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { CartContextProvider } from "@/components/context/cartContext";
 const inter = Inter({ subsets: ["latin"] });
 
 // TODO: Veritabanı ile konuşarak BackOffice'ten alınabilir
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + bodyStyle}>
-        <Navbar />
-        {children}
-        <Footer />
+        <CartContextProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </CartContextProvider>
       </body>
     </html>
   );
