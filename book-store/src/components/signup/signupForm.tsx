@@ -1,7 +1,43 @@
-import { CSSProperties } from "react";
+"use client";
+import { CSSProperties, useReducer, useState } from "react";
 import AnimatedInput from "../animatedInput";
+import { TSignupFormData } from "@/types/formData";
+import TSignupReducerAction from "@/types/SignupReducerAction";
+import ESignupAction from "@/enums/SignupActionEnum";
 
 export default function SignupForm() {
+  //const [formData, setFormData] = useState<TFormData<"SIGNUP">>();
+  const initialData: TSignupFormData = {
+    name: "",
+    surname: "",
+    email: "",
+    password: "",
+    passwordConfirmation: "",
+  };
+  const [formData, setFormData] = useReducer(formReducer, initialData);
+  function formReducer(state: TSignupFormData, action: TSignupReducerAction) {
+    switch (action.type) {
+      case ESignupAction.changeEmail: {
+        return { ...state, email: action.payload };
+      }
+      case ESignupAction.changeName: {
+        return { ...state, name: action.payload };
+      }
+      case ESignupAction.changeSurname: {
+        return { ...state, name: action.payload };
+      }
+
+      case ESignupAction.changePassword: {
+        return { ...state, password: action.payload };
+      }
+      case ESignupAction.changePasswordConfirmation: {
+        return { ...state, passwordConfirmation: action.payload };
+      }
+      default: {
+        return {} as TSignupFormData;
+      }
+    }
+  }
   return (
     <form className={signupFormStyles.formWrapper}>
       <div className={signupFormStyles.nameSurnameWrapper}>
@@ -14,6 +50,8 @@ export default function SignupForm() {
             inputStyle: signupFormStyles.input,
             inputName: "name",
             inputType: "text",
+            setInputData: setFormData,
+            inputReducerAction: ESignupAction.changeName,
           }}
         />
         <AnimatedInput
@@ -21,11 +59,12 @@ export default function SignupForm() {
           settings={{
             inputWrapperStyle: signupFormStyles.inputWrapper,
             labelStyle: signupFormStyles.inputLabel,
-
             labelText: "Surname",
             inputStyle: signupFormStyles.input,
             inputName: "surname",
             inputType: "text",
+            setInputData: setFormData,
+            inputReducerAction: ESignupAction.changeSurname,
           }}
         />
       </div>
@@ -40,6 +79,8 @@ export default function SignupForm() {
             inputStyle: signupFormStyles.input,
             inputName: "email",
             inputType: "email",
+            setInputData: setFormData,
+            inputReducerAction: ESignupAction.changeEmail,
           }}
         />
       </div>
@@ -54,6 +95,8 @@ export default function SignupForm() {
             inputStyle: signupFormStyles.input,
             inputName: "password",
             inputType: "password",
+            setInputData: setFormData,
+            inputReducerAction: ESignupAction.changePassword,
           }}
         />
         <AnimatedInput
@@ -65,10 +108,12 @@ export default function SignupForm() {
             inputStyle: signupFormStyles.input,
             inputName: "confirmPassword",
             inputType: "password",
+            setInputData: setFormData,
+            inputReducerAction: ESignupAction.changePasswordConfirmation,
           }}
         />
       </div>
-      <button>Signup</button>
+      <button>Register</button>
     </form>
   );
 }

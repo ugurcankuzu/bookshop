@@ -5,7 +5,7 @@ import SignupForm from "./signup/signupForm";
 export default function SignupCard({ pathName }: { pathName: string }) {
   return (
     <section className={signupCardStyles.cardWrapper}>
-      <div>
+      <div className={signupCardStyles.cardHeader}>
         <h2>
           {pathName === "/signup"
             ? "Register to BookShop"
@@ -29,4 +29,5 @@ export default function SignupCard({ pathName }: { pathName: string }) {
 
 const signupCardStyles = {
   cardWrapper: "w-full flex flex-col gap-4 bg-smoke/10 ",
+  cardHeader: ""
 };

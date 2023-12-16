@@ -1,7 +1,7 @@
 "use client";
 import TAnimatedInput from "@/types/animatedInput";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function AnimatedInput({
   settings,
@@ -9,7 +9,6 @@ export default function AnimatedInput({
   settings: TAnimatedInput;
 }) {
   const [isFocused, setFocus] = useState(false);
-
   const initial = {
     left: 10,
     top: "50%",
@@ -39,10 +38,22 @@ export default function AnimatedInput({
       </motion.p>
       <input
         onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
+        onBlur={(event) => {
+          if (event.target.value === "") {
+            setFocus(false);
+          }
+        }}
         type={settings.inputType ? settings.inputType : "text"}
         name={settings.inputName}
         style={settings.inputStyle}
+        onChange={(event) =>
+          settings.setInputData
+            ? settings.setInputData({
+                type: settings.inputReducerAction,
+                payload: event.target.value,
+              })
+            : null
+        }
       />
     </div>
   );

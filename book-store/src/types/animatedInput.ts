@@ -1,4 +1,4 @@
-import { CSSProperties, HTMLInputTypeAttribute } from "react";
+import { CSSProperties, Dispatch, HTMLInputTypeAttribute } from "react";
 
 type TAnimatedInput = {
   inputWrapperStyle: string;
@@ -7,6 +7,8 @@ type TAnimatedInput = {
   inputStyle: CSSProperties;
   inputType?: HTMLInputTypeAttribute;
   inputName: string;
+  setInputData?: Dispatch<any>;
+  inputReducerAction?: string;
 };
 
 export default TAnimatedInput;
