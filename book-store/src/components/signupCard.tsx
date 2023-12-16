@@ -5,13 +5,9 @@ import SignupForm from "./signup/signupForm";
 export default function SignupCard({ pathName }: { pathName: string }) {
   return (
     <section className={signupCardStyles.cardWrapper}>
-      <div className={signupCardStyles.cardHeader}>
-        <h2>
-          {pathName === "/signup"
-            ? "Register to BookShop"
-            : "Login to BookShop"}
-        </h2>
-      </div>
+      <h2 className={signupCardStyles.cardHeader}>
+        {pathName === "/signup" ? "Join Now" : "Login to BookShop"}
+      </h2>
       {pathName === "/signup" ? <SignupForm /> : <LoginForm />}
       <div>
         {pathName === "/signup" ? (
@@ -28,6 +24,6 @@ export default function SignupCard({ pathName }: { pathName: string }) {
 }
 
 const signupCardStyles = {
-  cardWrapper: "w-full flex flex-col gap-4 bg-smoke/10 ",
-  cardHeader: ""
+  cardWrapper: "w-full flex flex-col gap-4 bg-smoke/10 p-2",
+  cardHeader: "text-3xl font-bold",
 };

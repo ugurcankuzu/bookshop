@@ -113,7 +113,7 @@ export default function SignupForm() {
           }}
         />
       </div>
-      <button>Register</button>
+      <button className={signupFormStyles.submitButton}>Register</button>
     </form>
   );
 }
@@ -129,5 +129,6 @@ const signupFormStyles = {
     position: "absolute",
     fontSize: "1rem",
   } as CSSProperties,
-  input: { width: "100%", height: "100%" } as CSSProperties,
+  submitButton: "bg-coal/90 text-pearl rounded py-1",
+  input: { width: "100%", height: "100%",outline: "none" } as CSSProperties,
 };
