@@ -21,10 +21,10 @@ export default function AnimatedInput({
       : "1.5rem",
   };
   const isFocusedAnimation = {
-    left: 0,
-    top: 0,
+    left: 2,
+    top: 2,
     translateY: 0,
-    fontSize: "0.75rem",
+    fontSize: "0.60rem",
     lineHeight: "1rem",
   };
   return (

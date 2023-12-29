@@ -130,5 +130,5 @@ const signupFormStyles = {
     fontSize: "1rem",
   } as CSSProperties,
   submitButton: "bg-coal/90 text-pearl rounded py-1",
-  input: { width: "100%", height: "100%",outline: "none" } as CSSProperties,
+  input: { width: "100%", height: "100%",outline: "none", backgroundColor: "#c7c7c733",borderRadius: "0.25rem",fontSize: "0.875rem",lineHeight: "1.25rem",padding: "0 10px" } as CSSProperties,
 };

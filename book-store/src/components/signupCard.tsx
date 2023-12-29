@@ -24,6 +24,6 @@ export default function SignupCard({ pathName }: { pathName: string }) {
 }
 
 const signupCardStyles = {
-  cardWrapper: "w-full flex flex-col gap-4 bg-smoke/10 p-2",
+  cardWrapper: "w-full flex flex-col gap-4 p-2",
   cardHeader: "text-3xl font-bold",
 };
