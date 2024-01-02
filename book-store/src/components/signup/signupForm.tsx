@@ -4,9 +4,12 @@ import AnimatedInput from "../animatedInput";
 import { TSignupFormData } from "@/types/formData";
 import TSignupReducerAction from "@/types/SignupReducerAction";
 import ESignupAction from "@/enums/SignupActionEnum";
+import signupUser from "@/util/signupUser";
+import { useRouter } from "next/navigation";
 
 export default function SignupForm() {
   //const [formData, setFormData] = useState<TFormData<"SIGNUP">>();
+  const router = useRouter();
   const initialData: TSignupFormData = {
     name: "",
     surname: "",
@@ -39,7 +42,18 @@ export default function SignupForm() {
     }
   }
   return (
-    <form className={signupFormStyles.formWrapper}>
+    <form
+      method="POST"
+      className={signupFormStyles.formWrapper}
+      onSubmit={(event) => {
+        event.preventDefault();
+        signupUser(formData).then((result) =>
+          result
+            ? router.push("/login")
+            : alert("We can't register at this moment. Please try again later.")
+        );
+      }}
+    >
       <div className={signupFormStyles.nameSurnameWrapper}>
         <AnimatedInput
           key={0}
@@ -130,5 +144,14 @@ const signupFormStyles = {
     fontSize: "1rem",
   } as CSSProperties,
   submitButton: "bg-coal/90 text-pearl rounded py-1",
-  input: { width: "100%", height: "100%",outline: "none", backgroundColor: "#c7c7c733",borderRadius: "0.25rem",fontSize: "0.875rem",lineHeight: "1.25rem",padding: "0 10px" } as CSSProperties,
+  input: {
+    width: "100%",
+    height: "100%",
+    outline: "none",
+    backgroundColor: "#c7c7c733",
+    borderRadius: "0.25rem",
+    fontSize: "0.875rem",
+    lineHeight: "1.25rem",
+    padding: "0 10px",
+  } as CSSProperties,
 };
