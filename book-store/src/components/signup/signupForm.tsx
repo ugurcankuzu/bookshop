@@ -27,7 +27,7 @@ export default function SignupForm() {
         return { ...state, name: action.payload };
       }
       case ESignupAction.changeSurname: {
-        return { ...state, name: action.payload };
+        return { ...state, surname: action.payload };
       }
 
       case ESignupAction.changePassword: {

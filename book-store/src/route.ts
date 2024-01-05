@@ -11,6 +11,7 @@ const routes = [
     label: "Signup",
     path: "/signup",
   },
+  { label: "Login", path: "/login" },
 ];
 
 export default routes;
