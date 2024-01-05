@@ -12,4 +12,5 @@ router.get("/allCategories", getAllCategories);
 router.get("/products/:productName", getProductByName);
 router.post("/signup", encryptPassword, signup);
 router.post("/login", login);
+
 module.exports = router;

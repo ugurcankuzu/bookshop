@@ -2,9 +2,10 @@
 import getLinkByLabel from "@/util/getLinkByLabel";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SearchBar from "./searchBar";
 import searchProduct from "@/util/searchProduct";
+import { UserContext } from "./context/userContext";
 export default function Navbar() {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [searchText, setSearchText] = useState<string>("");
@@ -12,7 +13,7 @@ export default function Navbar() {
   const handleResize = function (event: Event) {
     setWindowWidth(window.innerWidth);
   };
-
+  const userctx = useContext(UserContext);
   useEffect(() => {
     setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
@@ -27,7 +28,13 @@ export default function Navbar() {
 
     return () => clearTimeout(timer);
   }, [searchText]);
-
+  useEffect(()=>{
+    if(userctx.userState){
+      console.log("logged in")
+    }else{
+      console.log("Not logged in")
+    }
+  },[userctx.userState])
   return (
     <motion.section
       initial={{ y: 50, opacity: 0 }}
