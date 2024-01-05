@@ -1,4 +1,4 @@
-import TReducerAction from "@/types/cartContextReducerAction";
+import TReducerAction from "@/types/ReducerAction";
 import TCartItem from "@/types/cartItem";
 
 export default function addToCart(

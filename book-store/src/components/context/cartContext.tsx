@@ -1,7 +1,7 @@
 "use client";
 import EActionTypes from "@/enums/cartContextActionEnum";
 import TCartItem from "@/types/cartItem";
-import TReducerAction from "@/types/cartContextReducerAction";
+import TReducerAction from "@/types/ReducerAction";
 import { Dispatch, createContext, useEffect, useReducer } from "react";
 import TCartContext from "@/types/cartContext";
 import searchCartByItemName from "@/util/searchCartByItemName";
