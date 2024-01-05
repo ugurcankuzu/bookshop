@@ -1,5 +1,5 @@
 "use client";
-import { useReducer } from "react";
+import { useContext, useReducer } from "react";
 import { TLoginFormData } from "@/types/formData";
 import { CSSProperties } from "react";
 import AnimatedInput from "../animatedInput";
@@ -7,6 +7,8 @@ import TLoginReducerAction from "@/types/LoginReducerAction";
 import ELoginAction from "@/enums/LoginActionEnums";
 import loginUser from "@/util/loginUser";
 import { useRouter } from "next/navigation";
+import { UserContext } from "../context/userContext";
+import EUserActionTypes from "@/enums/userContextActionEnum";
 
 export default function LoginForm() {
   const initialData: TLoginFormData = {
@@ -15,6 +17,7 @@ export default function LoginForm() {
   };
   const [formData, setFormData] = useReducer(formReducer, initialData);
   const router = useRouter();
+  const userctx = useContext(UserContext);
   function formReducer(state: TLoginFormData, action: TLoginReducerAction) {
     switch (action.type) {
       case ELoginAction.changeEmail: {
@@ -37,6 +40,7 @@ export default function LoginForm() {
         loginUser(formData).then((tkn) => {
           if (tkn) {
             sessionStorage.setItem("usertkn", tkn);
+            userctx.userDispatch({ type: EUserActionTypes.login });
             router.push("/");
           } else {
             alert("Login Failed Please Try Again");
