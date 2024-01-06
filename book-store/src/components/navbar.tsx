@@ -3,7 +3,7 @@ import getLinkByLabel from "@/util/getLinkByLabel";
 import searchProduct from "@/util/searchProduct";
 import { faShoppingBasket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { motion } from "framer-motion";
+import { AnimatePresence, animate, motion } from "framer-motion";
 import Link from "next/link";
 import { ReactNode, useContext, useEffect, useState, MouseEvent } from "react";
 import { UserContext } from "./context/userContext";
@@ -72,20 +72,27 @@ export default function Navbar() {
               className={navbarComponentStyle.profile}
             >
               <FontAwesomeIcon icon={faUser} />
-              <div
-                className={
-                  navbarComponentStyle.userMenu +
-                  `${
-                    userMenuVisibility
-                      ? navbarComponentStyle.userMenuVisibile
-                      : navbarComponentStyle.userMenuNotVisible
-                  }`
-                }
-              >
-                <button onClick={handleLogout} className={navbarComponentStyle.userMenuButtons}>
-                  Signout
-                </button>
-              </div>
+              <AnimatePresence>
+                {userMenuVisibility && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{
+                      y: 0,
+                      opacity: 1,
+                    }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.25 }}
+                    className={navbarComponentStyle.userMenu}
+                  >
+                    <button
+                      onClick={handleLogout}
+                      className={navbarComponentStyle.userMenuButtons}
+                    >
+                      Signout
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </nav>
         )}
@@ -112,8 +119,6 @@ const navbarComponentStyle = {
   profile:
     "w-1/3 bg-coal/90 text-pearl rounded flex justify-center items-center py-1 relative cursor-pointer",
   cart: "w-1/3 flex justify-center items-center",
-  userMenu: "absolute px-2 py-1 mt-1 top-full bg-pearl shadow-md z-[100] ",
-  userMenuVisibile: "flex flex-col items-center justify-start",
-  userMenuNotVisible: "hidden",
+  userMenu: "absolute px-2 py-1 mt-1 top-full bg-pearl shadow-md z-[100] flex flex-col justify-start items-center",
   userMenuButtons: "text-coal",
 };
