@@ -39,8 +39,10 @@ export default function LoginForm() {
         event.preventDefault();
         loginUser(formData).then((tkn) => {
           if (tkn) {
-            sessionStorage.setItem("usertkn", tkn);
-            userctx.userDispatch({ type: EUserActionTypes.login });
+            userctx.userDispatch({
+              type: EUserActionTypes.login,
+              payload: { tkn: tkn },
+            });
             router.push("/");
           } else {
             alert("Login Failed Please Try Again");
