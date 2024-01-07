@@ -4,6 +4,9 @@ const {
   query,
   collection,
   where,
+  updateDoc,
+  doc,
+  serverTimestamp,
 } = require("firebase/firestore");
 const firebaseApp = require("../../firebase");
 const bcrypt = require("bcrypt");
@@ -21,6 +24,7 @@ async function login(req, res) {
         const compareResult = await bcrypt.compare(password, user.password);
         if (compareResult) {
           const jwt = createJWT({ id: snap.docs[0].id, email: user.email });
+          await updateDoc(doc(db,"users",snap.docs[0].id),{last_login: serverTimestamp()})
           res.status(200).send(jwt);
         } else {
           res.status(401).send("Invalid Password");
