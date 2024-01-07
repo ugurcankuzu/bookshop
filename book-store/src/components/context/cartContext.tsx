@@ -2,13 +2,21 @@
 import EActionTypes from "@/enums/cartContextActionEnum";
 import TCartItem from "@/types/cartItem";
 import TReducerAction from "@/types/ReducerAction";
-import { Dispatch, createContext, useEffect, useReducer } from "react";
+import {
+  Dispatch,
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react";
 import TCartContext from "@/types/cartContext";
 import searchCartByItemName from "@/util/searchCartByItemName";
 import addToCart from "@/util/addToCart";
 import removeFromCart from "@/util/removeFromCart";
 import clearCart from "@/util/clearCart";
 import saveCartToDB from "@/util/saveCartToDB";
+import { UserContext } from "./userContext";
+import getCart from "@/util/getCart";
 
 export const CartContext = createContext<TCartContext>({
   cartState: [] as TCartItem[],
@@ -17,6 +25,13 @@ export const CartContext = createContext<TCartContext>({
 
 function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
   switch (action.type) {
+    case EActionTypes.fetchCart: {
+      let cart: TCartItem[] = [];
+      getCart().then((result) => {
+        cart = result;
+      });
+      return cart;
+    }
     case EActionTypes.addToCart: {
       const itemIndex: number = searchCartByItemName(state, action);
       const updatedCart: TCartItem[] = addToCart(itemIndex, state, action);
@@ -52,6 +67,12 @@ export function CartContextProvider({
 }) {
   const initialValue: TCartItem[] = [];
   const [cart, cartDispatch] = useReducer(cartReducer, initialValue);
+  const userctx = useContext(UserContext);
+  useEffect(() => {
+    if (userctx.userState) {
+      cartDispatch({ type: EActionTypes.fetchCart });
+    }
+  }, [userctx.userState]);
 
   useEffect(() => {
     console.log(cart);

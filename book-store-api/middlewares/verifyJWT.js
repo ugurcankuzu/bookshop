@@ -7,8 +7,10 @@ function verifyJWT(req, res, next) {
     const secret = process.env.JWT_SECRET_KEY;
     jwt.verify(parsedTknString[1], secret, (err, decoded) => {
       if (decoded) {
-        req.body.userId = decoded.id;
-        req.body.email = decoded.email;
+        req.user = {
+          id: decoded.id,
+          email: decoded.email,
+        };
         next();
       } else {
         return res.status(403);
@@ -18,3 +20,5 @@ function verifyJWT(req, res, next) {
     res.status(401);
   }
 }
+
+module.exports = verifyJWT;
