@@ -71,6 +71,7 @@ export function CartContextProvider({
   useEffect(() => {
     if (userctx.userState) {
       cartDispatch({ type: EActionTypes.fetchCart });
+      console.log("Cart Fetch yapıldı.")
     }
   }, [userctx.userState]);
 
