@@ -15,7 +15,7 @@ async function getProductByName(req, res) {
     const db = getFirestore(firebaseApp);
     const q = query(
       collection(db, "products"),
-      where("productName", "==", productName)
+      where("productName", "==", decodeURI(productName)),
     );
     const snapshot = await getDocs(q);
     let data = {};

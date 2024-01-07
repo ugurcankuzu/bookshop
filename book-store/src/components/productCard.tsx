@@ -2,13 +2,17 @@ import TProduct from "@/types/product";
 import Image from "next/image";
 import mockCover from "../../public/bookCover.svg";
 import Link from "next/link";
+import getLinkByLabel from "@/util/getLinkByLabel";
+import Route from "@/types/route";
 
 interface IProductCard {
   item: TProduct;
 }
 export default function ProductCard({ item }: IProductCard) {
+  const productNameEncoded = encodeURI(item.productName);
+  const route: Route = getLinkByLabel("Product", undefined, false) as Route;
   return (
-    <Link href={""} className={productCardStyle.productWrapper}>
+    <Link href={route.path + `/${productNameEncoded}`} className={productCardStyle.productWrapper}>
       <div className={productCardStyle.productImageWrapper}>
         <Image
           src={mockCover}
@@ -54,8 +58,7 @@ const productCardStyle = {
   productInfoWrapper:
     "w-full h-full flex flex-col justify-between items-center divide-y divide-smoke",
   productNameWrapper: "w-full h-full",
-  productSubWrapper:
-    "w-full h-full flex justify-between items-center py-1",
+  productSubWrapper: "w-full h-full flex justify-between items-center py-1",
   productSubItemWrapper: "w-full h-full",
   productImage: "w-full h-full object-scale-down drop-shadow-md",
   productName: "text-2xl font-bold text-coal/90 line-clamp-1",

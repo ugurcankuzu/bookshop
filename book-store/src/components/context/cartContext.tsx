@@ -25,12 +25,8 @@ export const CartContext = createContext<TCartContext>({
 
 function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
   switch (action.type) {
-    case EActionTypes.fetchCart: {
-      let cart: TCartItem[] = [];
-      getCart().then((result) => {
-        cart = result;
-      });
-      return cart;
+    case EActionTypes.setCart: {
+      return action.payload as TCartItem[];
     }
     case EActionTypes.addToCart: {
       const itemIndex: number = searchCartByItemName(state, action);
@@ -70,8 +66,10 @@ export function CartContextProvider({
   const userctx = useContext(UserContext);
   useEffect(() => {
     if (userctx.userState) {
-      cartDispatch({ type: EActionTypes.fetchCart });
-      console.log("Cart Fetch yapıldı.")
+      getCart().then((cart) =>
+        cartDispatch({ type: EActionTypes.setCart, payload: cart })
+      );
+      console.log("Cart Fetch yapıldı.");
     }
   }, [userctx.userState]);
 
