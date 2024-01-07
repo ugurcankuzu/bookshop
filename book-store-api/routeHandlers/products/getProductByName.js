@@ -25,7 +25,7 @@ async function getProductByName(req, res) {
         const categoryNameRef = docObj.category;
         const categorySnap = await getDoc(categoryNameRef);
         docObj.category = categorySnap.data().categoryName;
-        data = docObj;
+        data = { ...docObj, id: doc.id };
         res.status(200).send(data);
       });
     } else {

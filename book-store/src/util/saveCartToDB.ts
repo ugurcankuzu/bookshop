@@ -3,6 +3,10 @@ import TCartItem from "@/types/cartItem";
 export default async function saveCartToDB(state: TCartItem[]) {
   const usertkn = sessionStorage.getItem("usertkn");
   if (usertkn) {
+    const filteredCart = state.map((item) => ({
+      id: item.id,
+      amount: item.amount,
+    }));
     const response = await fetch(
       process.env.NEXT_PUBLIC_API_URL + "/saveCart",
       {
@@ -12,7 +16,7 @@ export default async function saveCartToDB(state: TCartItem[]) {
           Authorization: `Bearer ${usertkn}`,
         },
         body: JSON.stringify({
-          cart: state,
+          cart: filteredCart,
         }),
       }
     );

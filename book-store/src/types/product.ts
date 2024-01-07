@@ -1,4 +1,5 @@
 type TProduct = {
+  id: string;
   category: Object;
   price: number;
   stock: number;

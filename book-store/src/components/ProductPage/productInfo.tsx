@@ -1,4 +1,5 @@
 import TProduct from "@/types/product";
+import ProductAction from "./productAction";
 export default function ProductInfo({
   productInfo,
 }: {
@@ -35,13 +36,14 @@ export default function ProductInfo({
           </p>
         </div>
       </div>
+      <ProductAction product={productInfo} />
     </div>
   );
 }
 
 const productInfoStyles = {
   productInfoWrapper:
-    "w-full max-w-1/2 self-stretch flex flex-col justify-start items-center gap-2 bg-smoke/10 sm:justify-center lg:w-1/2",
+    "w-full max-w-1/2 self-stretch flex flex-col justify-start items-center gap-2 bg-smoke/10 sm:justify-center lg:w-1/2 relative",
   productMetaWrapper: "w-full flex flex-col justify-center items-center",
   productDetail: "w-full flex items-center justify-between gap-2 py-2",
   productDetailsWrapper:

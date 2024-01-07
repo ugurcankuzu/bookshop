@@ -7,11 +7,12 @@ export default function addToCart(
   action: TReducerAction
 ) {
   if (itemIndex >= 0) {
-    state[itemIndex].amount++;
+    const payloadItem = action.payload as TCartItem;
+    state[itemIndex].amount += payloadItem.amount;
     return [...state];
   } else {
     const newItem: TCartItem = action.payload as TCartItem;
-    newItem.amount = 1;
+    newItem.amount = newItem.amount;
     return [...state, newItem];
   }
 }

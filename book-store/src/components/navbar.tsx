@@ -9,6 +9,7 @@ import { ReactNode, useContext, useEffect, useState, MouseEvent } from "react";
 import { UserContext } from "./context/userContext";
 import SearchBar from "./searchBar";
 import EUserActionTypes from "@/enums/userContextActionEnum";
+import { CartContext } from "./context/cartContext";
 export default function Navbar() {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [searchText, setSearchText] = useState<string>("");
@@ -23,6 +24,7 @@ export default function Navbar() {
     setWindowWidth(window.innerWidth);
   };
   const userctx = useContext(UserContext);
+  const cartctx = useContext(CartContext);
   useEffect(() => {
     setWindowWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
@@ -66,6 +68,11 @@ export default function Navbar() {
             {getLinkByLabel("Shop", navbarComponentStyle.navItem) as ReactNode}
             <div className={navbarComponentStyle.cart}>
               <FontAwesomeIcon icon={faShoppingBasket} />
+              <span className={navbarComponentStyle.cartSize}>
+                {cartctx.cartState.length >= 10
+                  ? "9+"
+                  : cartctx.cartState.length}
+              </span>
             </div>
             <div
               onClick={handleUserMenuVisibility}
@@ -118,7 +125,10 @@ const navbarComponentStyle = {
     "w-full flex justify-center items-center bg-coal/90 text-pearl rounded tracking-wider py-1",
   profile:
     "w-1/3 bg-coal/90 text-pearl rounded flex justify-center items-center py-1 relative cursor-pointer",
-  cart: "w-1/3 flex justify-center items-center",
-  userMenu: "absolute px-2 py-1 mt-1 top-full bg-pearl shadow-md z-[100] flex flex-col justify-start items-center",
+  cart: "w-1/3 flex justify-center items-center relative",
+  userMenu:
+    "absolute px-2 py-1 mt-1 top-full bg-pearl shadow-md z-[100] flex flex-col justify-start items-center",
   userMenuButtons: "text-coal",
+  cartSize:
+    "absolute bg-coal/90 text-pearl w-[1.25rem] h-[1.25rem] right-1 bottom-full flex justify-center items-center rounded-full text-center",
 };
