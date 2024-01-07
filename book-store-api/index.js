@@ -8,7 +8,9 @@ const router = require("./router");
 const cookieParser = require("cookie-parser");
 //initializations
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
