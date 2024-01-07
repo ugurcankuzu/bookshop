@@ -9,7 +9,7 @@ const {
   serverTimestamp,
 } = require("firebase/firestore");
 const firebaseApp = require("../../firebase");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const createJWT = require("../../util/createJWT");
 
 async function login(req, res) {
