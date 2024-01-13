@@ -12,7 +12,6 @@ import EUserActionTypes from "@/enums/userContextActionEnum";
 import { CartContext } from "./context/cartContext";
 export default function Navbar() {
   const [windowWidth, setWindowWidth] = useState<number>(0);
-  const [searchText, setSearchText] = useState<string>("");
   const [userMenuVisibility, setUserMenuVisibility] = useState(false);
   const handleUserMenuVisibility = function (event: MouseEvent) {
     setUserMenuVisibility((state) => !state);
@@ -32,13 +31,6 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      searchProduct(searchText);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [searchText]);
   return (
     <motion.section
       initial={{ y: 50, opacity: 0 }}
@@ -50,12 +42,7 @@ export default function Navbar() {
         <Link href={"/"}>
           <h1 className={navbarComponentStyle.logo}>BS</h1>
         </Link>
-        {windowWidth >= 640 ? (
-          <SearchBar
-            initialSearchText={searchText}
-            setSearchText={setSearchText}
-          />
-        ) : null}
+        {windowWidth >= 640 ? <SearchBar /> : null}
 
         {!userctx.userState && (
           <nav className={navbarComponentStyle.navbarRoutes}>
@@ -104,12 +91,7 @@ export default function Navbar() {
           </nav>
         )}
       </div>
-      {windowWidth < 640 ? (
-        <SearchBar
-          initialSearchText={searchText}
-          setSearchText={setSearchText}
-        />
-      ) : null}
+      {windowWidth < 640 ? <SearchBar /> : null}
     </motion.section>
   );
 }
@@ -117,7 +99,8 @@ export default function Navbar() {
 const navbarComponentStyle = {
   navbarSectionFrame:
     "w-full flex flex-col justify-start items-center gap-4 bg-smoke/10 p-3 ",
-  navbarMain: "w-full flex justify-between items-center xl:w-4/5 2xl:w-3/5",
+  navbarMain:
+    "w-full flex justify-between items-center gap-2 xl:w-4/5 2xl:w-3/5",
   navbarRoutes: "w-full flex justify-center items-center sm:w-2/5 md:w-1/4",
   logo: "w-[36px] h-[36px] flex justify-center items-center bg-coal/90 text-pearl rounded-full tracking-widest",
   navItem: "w-full flex justify-center items-center tracking-wider ",
