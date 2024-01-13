@@ -13,6 +13,7 @@ const routes = [
   },
   { label: "Login", path: "/login" },
   { label: "Product", path: "/product" },
+  { label: "Cart", path: "/cart" },
 ];
 
 export default routes;
