@@ -17,6 +17,7 @@ import clearCart from "@/util/clearCart";
 import saveCartToDB from "@/util/saveCartToDB";
 import { UserContext } from "./userContext";
 import getCart from "@/util/getCart";
+import removeCompletelyFromCart from "@/util/removeCompletelyFromCart";
 
 export const CartContext = createContext<TCartContext>({
   cartState: [] as TCartItem[],
@@ -42,6 +43,11 @@ function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
       saveCartToDB(updatedCart).then((result) =>
         result ? null : alert("Your Cart Not Saved.")
       );
+      return updatedCart;
+    }
+    case EActionTypes.removeCompletely: {
+      const item: TCartItem = action.payload as TCartItem;
+      const updatedCart: TCartItem[] = removeCompletelyFromCart(item, state);
       return updatedCart;
     }
     case EActionTypes.clearCart: {

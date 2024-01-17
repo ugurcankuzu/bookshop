@@ -1,15 +1,21 @@
 import TCartItem from "@/types/cartItem";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ChangeEvent, useContext } from "react";
+import { ChangeEvent, useContext, MouseEvent } from "react";
 import { CartContext } from "../context/cartContext";
 import EActionTypes from "@/enums/cartContextActionEnum";
 
 export default function CartListItem({ product }: { product: TCartItem }) {
   const cartCtx = useContext(CartContext);
-  const handleInput = (event: ChangeEvent<HTMLInputElement>)=>{
-    cartCtx.cartDispatch({type: EActionTypes.addToCart})
-  }
+  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    cartCtx.cartDispatch({ type: EActionTypes.addToCart });
+  };
+  const handleRemove = (event: MouseEvent<HTMLButtonElement>) => {
+    cartCtx.cartDispatch({
+      type: EActionTypes.removeCompletely,
+      payload: product,
+    });
+  };
   return (
     <div className={CartListItemStyles.wrapper}>
       <div className={CartListItemStyles.productMetaInfo}>
@@ -28,7 +34,10 @@ export default function CartListItem({ product }: { product: TCartItem }) {
           max={99}
           defaultValue={product.amount}
         />
-        <button className={CartListItemStyles.deleteButton}>
+        <button
+          onClick={handleRemove}
+          className={CartListItemStyles.deleteButton}
+        >
           <FontAwesomeIcon icon={faTrash} />
         </button>
       </div>
