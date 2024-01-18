@@ -5,6 +5,8 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { CartContextProvider } from "@/components/context/cartContext";
 import { UserContextProvider } from "@/components/context/userContext";
+import { GlobalNotificationContextProvider } from "@/components/context/notificationContext";
+import GlobalNotificationPopup from "@/components/globalNotification";
 const inter = Inter({ subsets: ["latin"] });
 
 // TODO: Veritabanı ile konuşarak BackOffice'ten alınabilir
@@ -21,13 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + bodyStyle}>
-        <UserContextProvider>
-          <CartContextProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </CartContextProvider>
-        </UserContextProvider>
+        <GlobalNotificationContextProvider>
+          <UserContextProvider>
+            <CartContextProvider>
+              <Navbar />
+              {children}
+              <GlobalNotificationPopup />
+              <Footer />
+            </CartContextProvider>
+          </UserContextProvider>
+        </GlobalNotificationContextProvider>
       </body>
     </html>
   );

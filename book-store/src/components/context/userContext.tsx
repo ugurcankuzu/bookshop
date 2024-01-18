@@ -6,9 +6,12 @@ import {
   createContext,
   Dispatch,
   ReactNode,
+  useContext,
   useEffect,
   useReducer,
 } from "react";
+import { NotificationContext } from "./notificationContext";
+import ENotificationAction from "@/enums/notificationContextAction";
 
 export const UserContext = createContext<TUserContext>({
   userState: false,
@@ -16,14 +19,20 @@ export const UserContext = createContext<TUserContext>({
 });
 
 function userReducer(state: boolean, action: TUserReducerAction) {
+  const notificationCtx = useContext(NotificationContext);
   switch (action.type) {
     case EUserActionTypes.login: {
       sessionStorage.setItem("usertkn", action.payload.tkn);
-
+      notificationCtx.notificationDispatch({
+        type: ENotificationAction.loginSuccess,
+      });
       return true;
     }
     case EUserActionTypes.logout: {
       sessionStorage.removeItem("usertkn");
+      notificationCtx.notificationDispatch({
+        type: ENotificationAction.logoutSuccess,
+      });
       return false;
     }
   }

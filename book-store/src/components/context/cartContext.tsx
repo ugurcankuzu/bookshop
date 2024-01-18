@@ -18,6 +18,8 @@ import saveCartToDB from "@/util/saveCartToDB";
 import { UserContext } from "./userContext";
 import getCart from "@/util/getCart";
 import removeCompletelyFromCart from "@/util/removeCompletelyFromCart";
+import { NotificationContext } from "./notificationContext";
+import ENotificationAction from "@/enums/notificationContextAction";
 
 export const CartContext = createContext<TCartContext>({
   cartState: [] as TCartItem[],
@@ -25,6 +27,7 @@ export const CartContext = createContext<TCartContext>({
 });
 
 function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
+  const notificationCtx = useContext(NotificationContext);
   switch (action.type) {
     case EActionTypes.setCart: {
       return action.payload as TCartItem[];
@@ -33,7 +36,13 @@ function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
       const itemIndex: number = searchCartByItemName(state, action);
       const updatedCart: TCartItem[] = addToCart(itemIndex, state, action);
       saveCartToDB(updatedCart).then((result) =>
-        result ? null : alert("Your Cart Not Saved.")
+        result
+          ? notificationCtx.notificationDispatch({
+              type: ENotificationAction.savedSuccess,
+            })
+          : notificationCtx.notificationDispatch({
+              type: ENotificationAction.savedNotSuccess,
+            })
       );
       return updatedCart;
     }
@@ -41,24 +50,45 @@ function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
       const itemIndex: number = searchCartByItemName(state, action);
       const updatedCart: TCartItem[] = removeFromCart(itemIndex, state);
       saveCartToDB(updatedCart).then((result) =>
-        result ? null : alert("Your Cart Not Saved.")
+        result
+          ? notificationCtx.notificationDispatch({
+              type: ENotificationAction.savedSuccess,
+            })
+          : notificationCtx.notificationDispatch({
+              type: ENotificationAction.savedNotSuccess,
+            })
       );
       return updatedCart;
     }
     case EActionTypes.removeCompletely: {
       const item: TCartItem = action.payload as TCartItem;
       const updatedCart: TCartItem[] = removeCompletelyFromCart(item, state);
+      saveCartToDB(updatedCart).then((result) =>
+        result
+          ? notificationCtx.notificationDispatch({
+              type: ENotificationAction.savedSuccess,
+            })
+          : notificationCtx.notificationDispatch({
+              type: ENotificationAction.savedNotSuccess,
+            })
+      );
       return updatedCart;
     }
     case EActionTypes.clearCart: {
       const updatedCart: TCartItem[] = clearCart(state);
       saveCartToDB(updatedCart).then((result) =>
-        result ? null : alert("Your Cart Not Saved.")
+        result
+          ? notificationCtx.notificationDispatch({
+              type: ENotificationAction.savedSuccess,
+            })
+          : notificationCtx.notificationDispatch({
+              type: ENotificationAction.savedNotSuccess,
+            })
       );
       return updatedCart;
     }
     default: {
-      return [];
+      return state;
     }
   }
 }
@@ -75,7 +105,6 @@ export function CartContextProvider({
       getCart().then((cart) =>
         cartDispatch({ type: EActionTypes.setCart, payload: cart })
       );
-      console.log("Cart Fetch yapıldı.");
     }
   }, [userctx.userState]);
 

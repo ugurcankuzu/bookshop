@@ -13,7 +13,7 @@ async function saveCart(req, res) {
     })
     const docRef = doc(db, "users", id);
     await updateDoc(docRef, { cart: refCart });
-    res.status(200);
+    res.status(200).send();
   } catch (e) {
     res.status(500).send(e.message);
   }

@@ -8,7 +8,10 @@ import EActionTypes from "@/enums/cartContextActionEnum";
 export default function CartListItem({ product }: { product: TCartItem }) {
   const cartCtx = useContext(CartContext);
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    cartCtx.cartDispatch({ type: EActionTypes.addToCart });
+    cartCtx.cartDispatch({
+      type: EActionTypes.addToCart,
+      payload: { ...product, amount: Number.parseInt(event.target.value, 10) || 1 },
+    });
   };
   const handleRemove = (event: MouseEvent<HTMLButtonElement>) => {
     cartCtx.cartDispatch({
@@ -33,6 +36,7 @@ export default function CartListItem({ product }: { product: TCartItem }) {
           min={1}
           max={99}
           defaultValue={product.amount}
+          onChange={handleInput}
         />
         <button
           onClick={handleRemove}
@@ -53,6 +57,6 @@ const CartListItemStyles = {
   author: "text-sm font-light italic text-coal/40",
   cartItemController: "w-1/2 flex justify-end items-center gap-2",
   amountInput: "border rounded text-center",
-  deleteButton: "",
+  deleteButton: "bg-coal/90 text-pearl rounded w-8 h-8",
   price: "font-bold",
 };

@@ -8,7 +8,7 @@ export default function addToCart(
 ) {
   if (itemIndex >= 0) {
     const payloadItem = action.payload as TCartItem;
-    state[itemIndex].amount += payloadItem.amount;
+    state[itemIndex].amount = payloadItem.amount;
     return [...state];
   } else {
     const newItem: TCartItem = action.payload as TCartItem;

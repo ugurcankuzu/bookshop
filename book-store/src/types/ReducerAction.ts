@@ -4,7 +4,7 @@ import TCartItem from "./cartItem";
 
 type TReducerAction = {
   type: EActionTypes;
-  payload?: TProduct | TCartItem[];
+  payload?: TProduct | TCartItem[] | TCartItem;
 };
 
 export default TReducerAction;

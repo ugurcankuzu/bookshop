@@ -23,9 +23,9 @@ export default function CartView() {
 }
 
 const CartViewStyles = {
-  cartFrame: "flex-1 flex flex-col border border-black",
-  cartWrapper: "border border-black p-2",
+  cartFrame: "flex-1",
+  cartWrapper: "w-full h-full flex flex-col gap-2 p-2",
   cartHeader:
-    "font-bold text-3xl relative after:content-[''] after:h-[1px] after:bottom-0 after:left-0 after:bg-black after:block after:mt-2",
+    "font-bold text-3xl relative after:content-[''] after:h-[1px] after:bottom-0 after:left-0 after:bg-slate-500/10 after:block after:mt-2",
   cart: "flex flex-col gap-2",
 };
