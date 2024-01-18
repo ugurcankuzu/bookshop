@@ -54,7 +54,7 @@ export default function GlobalNotificationPopup() {
 
 const notificationStyles = {
   notificationPopUp:
-    "w-4/5 p-2 bg-coal/90 text-pearl fixed left-1/2 -translate-x-1/2 rounded shadow-xl flex justify-center items-center font-bold",
+    "w-4/5 p-2 bg-coal/90 text-pearl fixed left-1/2 -translate-x-1/2 rounded shadow-xl flex justify-between items-center font-bold",
   notificationText: "w-full",
   notificationClose: "w-1/4",
 };
