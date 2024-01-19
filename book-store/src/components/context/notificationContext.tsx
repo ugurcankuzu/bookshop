@@ -54,7 +54,7 @@ function notificationReducer(
       return state;
   }
 }
-export function useGlobalNotification() {
+export function getGlobalNotificationDispatcher() {
   const { notificationDispatch } = useContext(NotificationContext);
   return { notificationDispatch };
 }

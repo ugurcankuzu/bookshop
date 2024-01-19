@@ -20,7 +20,7 @@ import getCart from "@/util/getCart";
 import removeCompletelyFromCart from "@/util/removeCompletelyFromCart";
 import {
   NotificationContext,
-  useGlobalNotification,
+  getGlobalNotificationDispatcher,
 } from "./notificationContext";
 import ENotificationAction from "@/enums/notificationContextAction";
 
@@ -30,7 +30,7 @@ export const CartContext = createContext<TCartContext>({
 });
 
 function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
-  const { notificationDispatch } = useGlobalNotification();
+  const { notificationDispatch } = getGlobalNotificationDispatcher();
   switch (action.type) {
     case EActionTypes.setCart: {
       return action.payload as TCartItem[];
