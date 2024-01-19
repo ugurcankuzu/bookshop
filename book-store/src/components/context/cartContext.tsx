@@ -1,7 +1,16 @@
 "use client";
 import EActionTypes from "@/enums/cartContextActionEnum";
-import TCartItem from "@/types/cartItem";
+import ENotificationAction from "@/enums/notificationContextAction";
 import TReducerAction from "@/types/ReducerAction";
+import TCartContext from "@/types/cartContext";
+import TCartItem from "@/types/cartItem";
+import addToCart from "@/util/addToCart";
+import clearCart from "@/util/clearCart";
+import getCart from "@/util/getCart";
+import removeCompletelyFromCart from "@/util/removeCompletelyFromCart";
+import removeFromCart from "@/util/removeFromCart";
+import saveCartToDB from "@/util/saveCartToDB";
+import searchCartByItemName from "@/util/searchCartByItemName";
 import {
   Dispatch,
   createContext,
@@ -9,20 +18,10 @@ import {
   useEffect,
   useReducer,
 } from "react";
-import TCartContext from "@/types/cartContext";
-import searchCartByItemName from "@/util/searchCartByItemName";
-import addToCart from "@/util/addToCart";
-import removeFromCart from "@/util/removeFromCart";
-import clearCart from "@/util/clearCart";
-import saveCartToDB from "@/util/saveCartToDB";
-import { UserContext } from "./userContext";
-import getCart from "@/util/getCart";
-import removeCompletelyFromCart from "@/util/removeCompletelyFromCart";
 import {
-  NotificationContext,
-  useGlobalNotification,
+  useGlobalNotification
 } from "./notificationContext";
-import ENotificationAction from "@/enums/notificationContextAction";
+import { UserContext } from "./userContext";
 
 export const CartContext = createContext<TCartContext>({
   cartState: [] as TCartItem[],
@@ -111,9 +110,6 @@ export function CartContextProvider({
     }
   }, [userctx.userState]);
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
   return (
     <CartContext.Provider
       value={{

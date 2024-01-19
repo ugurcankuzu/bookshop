@@ -16,7 +16,6 @@ export default function SearchBar() {
   const searchClient:SearchClient = {
     ...algoliaClient,
     search(requests: any[] | readonly MultipleQueriesQuery[]) {
-      console.log(typeof requests)
       if (requests.every(({ params }) => !params.query)) {
         return Promise.resolve({
           results: requests.map(() => ({
