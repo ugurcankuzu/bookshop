@@ -18,16 +18,19 @@ import saveCartToDB from "@/util/saveCartToDB";
 import { UserContext } from "./userContext";
 import getCart from "@/util/getCart";
 import removeCompletelyFromCart from "@/util/removeCompletelyFromCart";
-import { NotificationContext } from "./notificationContext";
+import {
+  NotificationContext,
+  useGlobalNotification,
+} from "./notificationContext";
 import ENotificationAction from "@/enums/notificationContextAction";
 
 export const CartContext = createContext<TCartContext>({
   cartState: [] as TCartItem[],
   cartDispatch: {} as Dispatch<TReducerAction>,
 });
-const notificationCtx = useContext(NotificationContext);
 
 function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
+  const { notificationDispatch } = useGlobalNotification();
   switch (action.type) {
     case EActionTypes.setCart: {
       return action.payload as TCartItem[];
@@ -37,10 +40,10 @@ function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
       const updatedCart: TCartItem[] = addToCart(itemIndex, state, action);
       saveCartToDB(updatedCart).then((result) =>
         result
-          ? notificationCtx.notificationDispatch({
+          ? notificationDispatch({
               type: ENotificationAction.savedSuccess,
             })
-          : notificationCtx.notificationDispatch({
+          : notificationDispatch({
               type: ENotificationAction.savedNotSuccess,
             })
       );
@@ -51,10 +54,10 @@ function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
       const updatedCart: TCartItem[] = removeFromCart(itemIndex, state);
       saveCartToDB(updatedCart).then((result) =>
         result
-          ? notificationCtx.notificationDispatch({
+          ? notificationDispatch({
               type: ENotificationAction.savedSuccess,
             })
-          : notificationCtx.notificationDispatch({
+          : notificationDispatch({
               type: ENotificationAction.savedNotSuccess,
             })
       );
@@ -65,10 +68,10 @@ function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
       const updatedCart: TCartItem[] = removeCompletelyFromCart(item, state);
       saveCartToDB(updatedCart).then((result) =>
         result
-          ? notificationCtx.notificationDispatch({
+          ? notificationDispatch({
               type: ENotificationAction.savedSuccess,
             })
-          : notificationCtx.notificationDispatch({
+          : notificationDispatch({
               type: ENotificationAction.savedNotSuccess,
             })
       );
@@ -78,10 +81,10 @@ function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
       const updatedCart: TCartItem[] = clearCart(state);
       saveCartToDB(updatedCart).then((result) =>
         result
-          ? notificationCtx.notificationDispatch({
+          ? notificationDispatch({
               type: ENotificationAction.savedSuccess,
             })
-          : notificationCtx.notificationDispatch({
+          : notificationDispatch({
               type: ENotificationAction.savedNotSuccess,
             })
       );

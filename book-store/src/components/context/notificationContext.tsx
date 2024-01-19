@@ -54,7 +54,10 @@ function notificationReducer(
       return state;
   }
 }
-
+export function useGlobalNotification() {
+  const { notificationDispatch } = useContext(NotificationContext);
+  return { notificationDispatch };
+}
 export function GlobalNotificationContextProvider({
   children,
 }: {

@@ -10,27 +10,30 @@ import {
   useEffect,
   useReducer,
 } from "react";
-import { NotificationContext } from "./notificationContext";
+import {
+  NotificationContext,
+  useGlobalNotification,
+} from "./notificationContext";
 import ENotificationAction from "@/enums/notificationContextAction";
 
 export const UserContext = createContext<TUserContext>({
   userState: false,
   userDispatch: {} as Dispatch<TUserReducerAction>,
 });
-const notificationCtx = useContext(NotificationContext);
 
 function userReducer(state: boolean, action: TUserReducerAction) {
+  const { notificationDispatch } = useGlobalNotification();
   switch (action.type) {
     case EUserActionTypes.login: {
       sessionStorage.setItem("usertkn", action.payload.tkn);
-      notificationCtx.notificationDispatch({
+      notificationDispatch({
         type: ENotificationAction.loginSuccess,
       });
       return true;
     }
     case EUserActionTypes.logout: {
       sessionStorage.removeItem("usertkn");
-      notificationCtx.notificationDispatch({
+      notificationDispatch({
         type: ENotificationAction.logoutSuccess,
       });
       return false;
