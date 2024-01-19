@@ -17,9 +17,9 @@ export const UserContext = createContext<TUserContext>({
   userState: false,
   userDispatch: {} as Dispatch<TUserReducerAction>,
 });
+const notificationCtx = useContext(NotificationContext);
 
 function userReducer(state: boolean, action: TUserReducerAction) {
-  const notificationCtx = useContext(NotificationContext);
   switch (action.type) {
     case EUserActionTypes.login: {
       sessionStorage.setItem("usertkn", action.payload.tkn);

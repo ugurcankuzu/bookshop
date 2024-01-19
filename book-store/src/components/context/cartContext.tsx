@@ -25,9 +25,9 @@ export const CartContext = createContext<TCartContext>({
   cartState: [] as TCartItem[],
   cartDispatch: {} as Dispatch<TReducerAction>,
 });
+const notificationCtx = useContext(NotificationContext);
 
 function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
-  const notificationCtx = useContext(NotificationContext);
   switch (action.type) {
     case EActionTypes.setCart: {
       return action.payload as TCartItem[];
