@@ -20,7 +20,7 @@ import getCart from "@/util/getCart";
 import removeCompletelyFromCart from "@/util/removeCompletelyFromCart";
 import {
   NotificationContext,
-  getGlobalNotificationDispatcher,
+  useGlobalNotification,
 } from "./notificationContext";
 import ENotificationAction from "@/enums/notificationContextAction";
 
@@ -29,8 +29,8 @@ export const CartContext = createContext<TCartContext>({
   cartDispatch: {} as Dispatch<TReducerAction>,
 });
 
-function cartReducer(state: TCartItem[], action: TReducerAction): TCartItem[] {
-  const { notificationDispatch } = getGlobalNotificationDispatcher();
+function useReducerFunc(state: TCartItem[], action: TReducerAction): TCartItem[] {
+  const { notificationDispatch } = useGlobalNotification();
   switch (action.type) {
     case EActionTypes.setCart: {
       return action.payload as TCartItem[];
@@ -101,7 +101,7 @@ export function CartContextProvider({
   children: React.ReactNode;
 }) {
   const initialValue: TCartItem[] = [];
-  const [cart, cartDispatch] = useReducer(cartReducer, initialValue);
+  const [cart, cartDispatch] = useReducer(useReducerFunc, initialValue);
   const userctx = useContext(UserContext);
   useEffect(() => {
     if (userctx.userState) {

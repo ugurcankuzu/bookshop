@@ -12,7 +12,7 @@ import {
 } from "react";
 import {
   NotificationContext,
-  getGlobalNotificationDispatcher,
+  useGlobalNotification,
 } from "./notificationContext";
 import ENotificationAction from "@/enums/notificationContextAction";
 
@@ -21,8 +21,8 @@ export const UserContext = createContext<TUserContext>({
   userDispatch: {} as Dispatch<TUserReducerAction>,
 });
 
-function userReducer(state: boolean, action: TUserReducerAction) {
-  const { notificationDispatch } = getGlobalNotificationDispatcher();
+function useReducerFunc(state: boolean, action: TUserReducerAction) {
+  const { notificationDispatch } = useGlobalNotification();
   switch (action.type) {
     case EUserActionTypes.login: {
       sessionStorage.setItem("usertkn", action.payload.tkn);
@@ -42,7 +42,7 @@ function userReducer(state: boolean, action: TUserReducerAction) {
 }
 
 export function UserContextProvider({ children }: { children: ReactNode }) {
-  const [user, userDispatch] = useReducer(userReducer, false);
+  const [user, userDispatch] = useReducer(useReducerFunc, false);
   useEffect(() => {
     const tkn = sessionStorage.getItem("usertkn");
     if (tkn) {
