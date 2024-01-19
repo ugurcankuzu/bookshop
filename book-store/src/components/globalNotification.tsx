@@ -25,7 +25,7 @@ export default function GlobalNotificationPopup() {
     if (!notificationContext.notificationState.display && timer) {
       return clearTimeout(timer);
     }
-  }, [notificationContext.notificationState]);
+  }, [notificationContext]);
 
   return (
     <AnimatePresence>
