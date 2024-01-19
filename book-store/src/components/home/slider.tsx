@@ -46,7 +46,12 @@ export default function CampaignSlider() {
           <p className={campaignSliderStyles.campaignSubTitle}>
             Fastest way to find & buy books Online. Not cheapest but the best...
           </p>
-          {getLinkByLabel("Shop", campaignSliderStyles.shopButton)}
+          {
+            getLinkByLabel(
+              "Shop",
+              campaignSliderStyles.shopButton
+            ) as React.ReactNode
+          }
         </div>
       </div>
     </section>
