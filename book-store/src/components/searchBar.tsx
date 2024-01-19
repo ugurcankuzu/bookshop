@@ -4,17 +4,19 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { Hits, InstantSearch, SearchBox } from "react-instantsearch";
-import algoliasearch from "algoliasearch";
+import algoliasearch, { SearchClient } from "algoliasearch";
 import HitComponent from "./hitComponent";
+import { MultipleQueriesQuery } from "@algolia/client-search";
 
 export default function SearchBar() {
   const algoliaClient = algoliasearch(
     process.env.NEXT_PUBLIC_ALGOLIA_ID as string,
     process.env.NEXT_PUBLIC_ALGOLIA_API_KEY as string
   );
-  const searchClient = {
+  const searchClient:SearchClient = {
     ...algoliaClient,
-    search(requests) {
+    search(requests: any[] | readonly MultipleQueriesQuery[]) {
+      console.log(typeof requests)
       if (requests.every(({ params }) => !params.query)) {
         return Promise.resolve({
           results: requests.map(() => ({
