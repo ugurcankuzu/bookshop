@@ -1,16 +1,15 @@
 "use client";
+import EUserActionTypes from "@/enums/userContextActionEnum";
+import Route from "@/types/route";
 import getLinkByLabel from "@/util/getLinkByLabel";
-import searchProduct from "@/util/searchProduct";
 import { faShoppingBasket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AnimatePresence, animate, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { ReactNode, useContext, useEffect, useState, MouseEvent } from "react";
+import { MouseEvent, ReactNode, useContext, useEffect, useState } from "react";
+import { CartContext } from "./context/cartContext";
 import { UserContext } from "./context/userContext";
 import SearchBar from "./searchBar";
-import EUserActionTypes from "@/enums/userContextActionEnum";
-import { CartContext } from "./context/cartContext";
-import Route from "@/types/route";
 export default function Navbar() {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [userMenuVisibility, setUserMenuVisibility] = useState(false);
