@@ -3,5 +3,14 @@
 @tailwind utilities;
 
 .ais-SearchBox-input[type="search"]::-webkit-search-cancel-button {
-    display: none;
-  }
+  display: none;
+}
+
+.selectArrowDown {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-repeat: no-repeat;
+  background-position: right center; /* Adjust the padding (8px in this case) */
+  background-size: 1em;
+}
