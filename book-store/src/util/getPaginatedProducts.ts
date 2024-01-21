@@ -1,6 +1,6 @@
 export default async function getPaginatedProducts(page: string) {
   const response = await fetch(
-    process.env.NEXT_PUBLIC_API_RUL+"/getPaginatedProducts?page=" + page,
+    process.env.NEXT_PUBLIC_API_URL+"/getPaginatedProducts?page=" + page,
     { method: "GET" }
   );
   if (response.status === 200) {
