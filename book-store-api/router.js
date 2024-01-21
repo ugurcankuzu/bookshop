@@ -8,13 +8,15 @@ const login = require("./routeHandlers/login/login");
 const getAllProducts = require("./routeHandlers/products/getAllProducts");
 const getProductByName = require("./routeHandlers/products/getProductByName");
 const getProductsBySalecount = require("./routeHandlers/products/getProductsBySalecount");
+const getTotalPages = require("./routeHandlers/shop/getTotalPages");
 const signup = require("./routeHandlers/signup/signup");
 router.get("/allProducts", getAllProducts);
 router.get("/products", getProductsBySalecount);
+router.get("/getTotalPages", getTotalPages);
 router.get("/allCategories", getAllCategories);
 router.get("/getCart", verifyJWT, getCart);
 router.get("/products/:productName", getProductByName);
-router.post("/saveCart",verifyJWT, saveCart)
+router.post("/saveCart", verifyJWT, saveCart);
 router.post("/signup", encryptPassword, signup);
 router.post("/login", login);
 
