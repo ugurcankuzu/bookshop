@@ -11,7 +11,10 @@ import TProduct from "@/types/product";
 export default function ShopViewItems({ orderBy }: { orderBy: EOrderBy }) {
   const [currentPage, setCurrentPage] = useState<string>("1");
   const [products, setProducts] = useState<TProduct[]>([]);
-  const currentUrl = window.location.href;
+  let currentUrl: string;
+  useEffect(() => {
+    currentUrl = window.location.href;
+  }, []);
   const router = useRouter();
   useEffect(() => {
     //Fetch atılıp itemler alınacak
