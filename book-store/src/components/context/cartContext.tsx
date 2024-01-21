@@ -36,6 +36,7 @@ function useReducerFunc(state: TCartItem[], action: TReducerAction): TCartItem[]
     }
     case EActionTypes.addToCart: {
       const itemIndex: number = searchCartByItemName(state, action);
+      console.log(itemIndex)
       const updatedCart: TCartItem[] = addToCart(itemIndex, state, action);
       saveCartToDB(updatedCart).then((result) =>
         result
