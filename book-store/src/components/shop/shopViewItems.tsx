@@ -1,3 +1,4 @@
+"use client";
 import EOrderBy from "@/enums/orderByEnum";
 import { useEffect, useState } from "react";
 import Paginator from "./paginator";
@@ -23,7 +24,7 @@ export default function ShopViewItems({ orderBy }: { orderBy: EOrderBy }) {
   }, [currentPage]);
   return (
     <div className={ShopViewItemsStyles.itemsWrapper}>
-      <ShopProducts products={products}/>
+      <ShopProducts products={products} />
       <Paginator currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </div>
   );

@@ -1,10 +1,7 @@
 "use client";
 
 import EOrderBy from "@/enums/orderByEnum";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 interface IShopViewOrder {
   orderBy: EOrderBy;
