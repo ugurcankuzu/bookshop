@@ -69,5 +69,5 @@ const campaignSliderStyles = {
   campaignTitle: "text-3xl lg:text-[36px] font-extrabold text-coal/90",
   campaignSubTitle: "text-lg text-coal/40",
   shopButton:
-    "w-1/2 border-2 border-coal/90 px-2 py-1 text-coal/90 font-bold text-lg text-center",
+    "w-1/2 border-2 border-coal/90 px-2 py-1 text-coal/90 font-bold text-lg text-center transition-all duration-[.5s] relative hover:bg-coal/90 hover:text-pearl before:content-[''] before:absolute before:left-0 before:bottom-0 before:h-1/4 before:w-0 hover:before:w-full hover:before:bg-pearl before:delay-[.1s] before:duration-[1s] before:ease-out before:bg-coal/90 before:transition-all",
 };

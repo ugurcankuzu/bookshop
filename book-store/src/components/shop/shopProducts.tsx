@@ -14,5 +14,5 @@ export default function ShopProducts({ products }: { products: TProduct[] }) {
 
 const ShopProductsStyles = {
   productsWrapper:
-    "w-full h-full flex flex-col gap-2 sm:grid sm:grid-cols-2 sm:auto-rows-max  sm:place-items-center lg:grid-cols-3 xl:grid-cols-auto xl:auto-cols-fr 2xl:grid-cols-5 xl:w-4/5 2xl:w-3/5",
+    "w-full h-full flex flex-col gap-2 sm:grid sm:auto-cols-max sm:auto-rows-max  sm:grid-cols-[repeat(auto-fill,300px)] sm:justify-start sm:content-start xl:w-4/5 2xl:w-3/5",
 };
