@@ -15,16 +15,16 @@ export default function ShopViewItems({ orderBy }: { orderBy: EOrderBy }) {
   const page = searchParams.get("page");
   const category = searchParams.get("category");
   let currentUrl: string;
-  useEffect(() => {}, []);
+
   const router = useRouter();
   useEffect(() => {
     currentUrl = window.location.href;
-
-    router.push(replacePageWith(parseInt(currentPage), currentUrl));
-    getPaginatedProducts(currentUrl).then((paginatedProducts: TProduct[]) =>
+    const replacedUrl = replacePageWith(parseInt(currentPage), currentUrl);
+    router.push(replacedUrl);
+    getPaginatedProducts(replacedUrl).then((paginatedProducts: TProduct[]) =>
       setProducts(paginatedProducts)
     );
-  }, [page, category]);
+  }, [page, category, currentPage]);
   return (
     <div className={ShopViewItemsStyles.itemsWrapper}>
       <ShopProducts products={products} />

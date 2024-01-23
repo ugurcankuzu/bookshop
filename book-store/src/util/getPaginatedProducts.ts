@@ -2,7 +2,7 @@ export default async function getPaginatedProducts(currentUrl:string) {
   const URLSearch = new URLSearchParams(currentUrl);
   const page = URLSearch.get("page");
   const category = URLSearch.get("category");
-  const query = `?page=${page || 1}${category ? "&category="+category:""}`
+  const query = `?page=${page ?? 1}${category ? "&category="+category:""}`
   const response = await fetch(
     process.env.NEXT_PUBLIC_API_URL+"/getPaginatedProducts"+query,
     { method: "GET" }
