@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         coal: "#0c0c0c",
         smoke: "#C7C7C7",
-        "main-orange": "#d07915",
+        "main-orange": "#F08700",
         pearl: "#FCFCFC",
       },
       backgroundImage: {

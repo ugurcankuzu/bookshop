@@ -20,8 +20,9 @@ export default function CampaignSlider() {
         <div className={campaignSliderStyles.swiperWrapper}>
           <Swiper
             pagination={{
-              type: "progressbar",
+              type: "bullets",
             }}
+            loop={true}
             modules={[Navigation, Pagination]}
             navigation={true}
             className={campaignSliderStyles.swiperObject}
