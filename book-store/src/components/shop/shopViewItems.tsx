@@ -7,6 +7,7 @@ import replacePageWith from "@/util/replacePageWith";
 import ShopProducts from "./shopProducts";
 import getPaginatedProducts from "@/util/getPaginatedProducts";
 import TProduct from "@/types/product";
+import sortProducts from "@/util/sortProducts";
 
 export default function ShopViewItems({ orderBy }: { orderBy: EOrderBy }) {
   const [currentPage, setCurrentPage] = useState<string>("1");
@@ -25,6 +26,11 @@ export default function ShopViewItems({ orderBy }: { orderBy: EOrderBy }) {
       setProducts(paginatedProducts)
     );
   }, [page, category, currentPage]);
+  useEffect(() => {
+    if (products.length > 0) {
+      sortProducts(products, orderBy, setProducts);
+    }
+  }, [orderBy, products.length]);
   return (
     <div className={ShopViewItemsStyles.itemsWrapper}>
       <ShopProducts products={products} />
